@@ -1,6 +1,6 @@
 let db
 
-const request = indexDB.open('tracker', 1)
+const request = indexedDB.open('tracker', 1)
 
 // will onyl run first time db is ceated or unless browser change
 request.onupgradeneeded = function(e) {
@@ -13,9 +13,9 @@ request.onsuccess = function (e) {
 
     db = e.target.result
 
-    if(navigator.onLine){
-        saveData()
-    }
+    // if(navigator.onLine){
+    //     saveData()
+    // }
 
 
 }
