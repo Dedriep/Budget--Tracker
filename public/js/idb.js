@@ -38,7 +38,7 @@ function saveRecord(record){
 }
 
 function getBudget() {
-    const transaction =db.transaction(['budget_data'], readwrite)
+    const transaction =db.transaction(['budget_data'], 'readwrite')
     const dataObjectStore = transaction.objectStore('budget_data')
    
    //will get all info in idb, asynch function, so needs an event listener
@@ -65,7 +65,7 @@ function getBudget() {
                 }
 
                 //opens transactions to accesses idb db and then clears db
-                const transaction = db.transaction(['budget_data'], readwrite)
+                const transaction = db.transaction(['budget_data'], 'readwrite')
                 const dataObjectStore = transaction.objectStore('budget_data')
                 dataObjectStore.clear()
 
