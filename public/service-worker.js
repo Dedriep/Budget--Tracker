@@ -1,11 +1,25 @@
-const APP_PREFIX = 'Budget Tracker -'
+const APP_PREFIX = 'Budget Tracker-'
 const VERSION = 'version_2.0'
 const CACHE_NAME = APP_PREFIX + VERSION
 const FILES_TO_CACHE = [
     './index.html',
     './js/index.js',
-    './css/style.css'
+    './css/styles.css'
 ]
+
+
+self.addEventListener('fetch', function (e){
+    e.respondWith(
+        caches.match(e.request).then(function(request){
+            // if (request){
+            //     return request
+            // }else{
+            //     return fetch(e.request)
+            // }
+            return request || fetch(e.request)
+        })
+    )
+})
 
 
 //occurs before the window object is created
@@ -38,3 +52,4 @@ self.addEventListener('activate', function (e) {
         })
     )
 })
+
